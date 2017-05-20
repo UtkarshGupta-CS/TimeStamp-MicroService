@@ -7,13 +7,13 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname + '/views/index.html'));
 })
 
-let d = new Date(1167436800)
+let d = new Date(1483056000000)
 console.log(d)
 
 app.get('/:input', (req, res) => {
-  const input = req.url.substring(1)
+  const input = decodeURI(req.url.substring(1));
   console.log(input + new Date(parseInt(input) * 1000) + new Date(input))
-  if (new Date(parseInt(input) * 1000) == 'Invalid Date' || new Date(input) == 'Invalid Date') {
+  if (new Date(parseInt(input) * 1000) == 'Invalid Date' && new Date(input) == 'Invalid Date') {
     dateObj = {
       "unix": null,
       "natural": null
