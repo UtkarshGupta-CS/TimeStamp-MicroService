@@ -52,7 +52,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/:query', (req, res) => {
-  const input = decodeURI(req.url.substring(1));
+  const input = decodeURI(/*req.url.substring(1)*/req.params.query);
   console.log(input + new Date(parseInt(input) * 1000) + new Date(input))
   if (new Date(parseInt(input) * 1000) == 'Invalid Date' && new Date(input) == 'Invalid Date') {
     dateObj = {
